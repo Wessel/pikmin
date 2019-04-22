@@ -1,0 +1,41 @@
+{
+  "name": "pikmin",
+  "version": "0.1.0",
+  "description": "A lightweight Node.js logger 🎊",
+  "author": "Wessel \"wesselgame\" T <discord@go2it.eu>",
+  "license": "MIT",
+  "main": "lib/pikmin.js",
+  "bugs": {
+    "url": "https://github.com/PassTHeWessel/pikmin/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PassTHeWessel/pikmin"
+  },
+  "files": [
+    "lib/",
+    "LICENSE"
+  ],
+  "scripts": {
+    "fix": "eslint --fix --quiet --color lib/*",
+    "lint": "eslint --color lib/*",
+    "test": "cd __test__ && node main.js",
+    "travis": "cd __test__ && node travis.js"
+  },
+  "optionalDependencies": {
+    "wumpfetch": "^0.2.9"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  },
+  "keywords": [
+    "log",
+    "logger",
+    "logging",
+    "custom",
+    "console",
+    "file",
+    "webhook",
+    "multiple-transports"
+  ]
+}
