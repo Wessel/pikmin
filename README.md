@@ -52,5 +52,8 @@ module.exports = () => {
 };
 ```
 
+## Showcase 
+![showcase](https://mrsheldon.me/files/86116428.png)
+
 ## Documentation
 Documentation can be found at [https://github.com/PassTheWessel/pikmin/wiki](https://github.com/PassTheWessel/pikmin/wiki)
