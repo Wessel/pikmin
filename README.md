@@ -1,7 +1,7 @@
-<img src="https://wessel.meek.moe/pikmin/thumb.png" align="left" width="180px" height="180px"/>
+<img src="https://wessel.meek.moe/pikmin/thumb.png" align="left" width="180px" height="100%"/>
 <img align="left" width="0" height="192px" hspace="10"/>
 
-> <a href="https://github.com/PassTheWessel/pikmin">Pikmin</a> - A lightweight, customizable Node.JS logger
+<a href="https://github.com/PassTheWessel/pikmin">Pikmin</a> - A lightweight, customizable Node.JS logger
 
 [![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)](/LICENSE) [![Travis Build Status](https://img.shields.io/travis/com/PassTheWessel/pikmin.svg?style=flat-square)](https://travis-ci.com/PassTheWessel/pikmin) [![NPM downloads](https://img.shields.io/npm/dm/pikmin.svg?style=flat-square)](https://npmjs.com/package/pikmin)
 
