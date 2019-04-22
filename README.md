@@ -1,4 +1,4 @@
-<img src="wessel.meek.moe/pikmin/thumb.png" align="left" width="180px" height="180px"/>
+<img src="https://wessel.meek.moe/pikmin/thumb.png" align="left" width="180px" height="180px"/>
 <img align="left" width="0" height="192px" hspace="10"/>
 
 > <a href="https://github.com/PassTheWessel/pikmin">Pikmin</a> - A lightweight, customizable Node.JS logger
