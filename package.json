@@ -5,6 +5,7 @@
   "author": "Wessel \"wesselgame\" T <discord@go2it.eu>",
   "license": "MIT",
   "main": "lib/pikmin.js",
+  "types": "index.d.ts",
   "bugs": {
     "url": "https://github.com/PassTHeWessel/pikmin/issues"
   },
