@@ -15,7 +15,8 @@
   },
   "files": [
     "lib/",
-    "LICENSE"
+    "LICENSE",
+    "index.d.ts"
   ],
   "scripts": {
     "fix": "eslint --fix --quiet --color lib/*",

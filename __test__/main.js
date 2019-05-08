@@ -9,7 +9,7 @@ const pikmin = new Pikmin.instance({
   ]
 });
 
-pikmin.addTransport(new Pikmin.ConsoleTransport({ process: process, name: 'error', format: `${Pikmin.colors.red('%l')}`, defaults: {} }));
+pikmin.addTransport(new Pikmin.ConsoleTransport({ process: process, name: 'error', format: `${Pikmin.colors.red('%l')} `, defaults: {} }));
 Pikmin.bind(pikmin, console);
 
 pikmin.info(Symbol.iterator);
