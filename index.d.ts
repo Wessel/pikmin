@@ -31,6 +31,8 @@ declare namespace Pikmin
     /** The instance itself */
     export class instance
     {
+        [x: string]: (m: any) => void;
+        
         /**
          * Construct a new instance of the Pikmin instance
          * @param options The options to bind
