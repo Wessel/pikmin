@@ -68,7 +68,7 @@ declare namespace Pikmin
 
     export class FileTransport implements Transport
     {
-        constructor(options: { file: string | PathLike, flags?: '-a' });
+        constructor(options: { file: string | PathLike, flags?: '-a', format: string });
 
         /** The type of the transport, implemented by the Transport interface */
         public type: 'CONSOLE' | 'WEBHOOK' | 'FILE';
