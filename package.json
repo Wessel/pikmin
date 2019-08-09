@@ -1,6 +1,6 @@
 {
   "name": "pikmin",
-  "version": "0.1.5",
+  "version": "0.1.8",
   "description": "A lightweight Node.js logger 🎊",
   "author": "Wessel \"wesselgame\" T <discord@go2it.eu>",
   "license": "MIT",
