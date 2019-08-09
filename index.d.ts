@@ -1,42 +1,21 @@
-declare module 'pikmin' {
-    import { WriteStream, PathLike } from "fs";
+import { WriteStream, PathLike } from "fs";
 
-    /** The loggers collection */
-    export const loggers: Collection<instance>;
-
-    /** The version of Pikmin */
+declare namespace Pikmin
+{
+    export const loggers: Pikmin.Collection<Pikmin.instance>;
     export const version: string;
+    export const colors: Pikmin.Colors;
 
-    /** The colors constant */
-    export const colors: Colors;
+    export function bind(i: Pikmin.instance, a?: Console, b?: any): void;
+    export function unbind(i: Pikmin.instance): void;
 
-    /**
-     * Binds the transport's functions into `a` (default: NodeJS.Console)
-     * @param i The instance to bind
-     * @param a The class you wanna bind it to, the default is: NodeJS.Console
-     * @param b Anything else to bind?
-     */
-    export function bind(i: instance, a?: Console, b?: any): void;
-
-    /**
-     * Unbinds Pikmin from the `NodeJS.Console` interface
-     * @param i The instance
-     */
-    export function unbind(i: instance): void;
-
-    /** The instance itself */
     export class instance {
-        [x: string]: any;
-        
-        /**
-         * Construct a new instance of the Pikmin instance
-         * @param options The options to bind
-         */
-        constructor(options?: InstanceOptions);
+        constructor(options?: Pikmin.InstanceOptions);
 
-        /** The log object */
         public log: {
-            [x: string]: (m: string | object | string[]) => void;
+            [x: string]: any;
+
+            __bound__: Console;
         }
 
         /** The name of the instance */
@@ -46,26 +25,28 @@ declare module 'pikmin' {
         public baseFormat: string;
 
         /** An array of transports */
-        public transports: Transport[];
+        public transports: Pikmin.Transport[];
 
         /**
          * Adds a transport
          * @param transport The transport to add 
          * @param options Any options to bind
          */
-        public addTransport(transport: Transport, options?: { autogen: boolean }): void;
+        public addTransport(transport: Pikmin.Transport, options?: { autogen: boolean }): void;
     }
 
-    export class Collection<T> extends Map<string | number, T> {
+    export class Collection<T> extends Map<string | number, T>
+    {
         public filter(i: (a: T) => boolean): T[];
-        public map<R>(i: (a: T) => R): T[];
+        public map(i: (a: T) => any): T[];
     }
 
     /** 
      * The console transport that logs anything to the terminal
      */
-    export class ConsoleTransport implements Transport {
-        constructor(options: InstanceOptions & { process: NodeJS.Process });
+    export class ConsoleTransport implements Transport
+    {
+        constructor(options: Pikmin.InstanceOptions & { process: NodeJS.Process });
 
         /** The type of the transport, implemented by the Transport interface */
         public type: 'CONSOLE' | 'WEBHOOK' | 'FILE';
@@ -85,8 +66,9 @@ declare module 'pikmin' {
         destroy(): this;
     }
 
-    export class FileTransport implements Transport {
-        constructor(options: InstanceOptions & { file: string | PathLike, flags?: '-a' });
+    export class FileTransport implements Transport
+    {
+        constructor(options: { path: string | PathLike, flags?: '-a' });
 
         /** The type of the transport, implemented by the Transport interface */
         public type: 'CONSOLE' | 'WEBHOOK' | 'FILE';
@@ -106,8 +88,9 @@ declare module 'pikmin' {
         destroy(): this;
     }
 
-    /** The colors interface, run by `colors` */
-    export interface Colors {
+    /** The colors interface, run by `Pikmin.colors` */
+    export interface Colors
+    {
         black: Color;
         red: Color;
         green: Color;
@@ -147,21 +130,20 @@ declare module 'pikmin' {
         blink: Color;
         inverse: Color;
         strikethrough: Color;
-        hex: (hex: string) => string | undefined;
-        rgb: (val: number[]) => string | undefined;
-        convert: (value: string | number[], to: 'hex' | 'rgb') => string | number[] | undefined;
         strip: (val: string) => string;
         supported: boolean;
     }
 
-    export interface InstanceOptions {
+    export interface InstanceOptions
+    {
         name?: string;
         format?: string;
         autogen?: boolean;
-        transports?: Transport[];
+        transports?: Pikmin.Transport[];
     }
 
-    export interface Transport {
+    export interface Transport
+    {
         type: 'CONSOLE' | 'WEBHOOK' | 'FILE';
         name: string;
         parent: any | undefined;
@@ -172,5 +154,7 @@ declare module 'pikmin' {
         destroy(): this;
     }
 
-    export type Color = (s: string | number | object) => string;
+    export type Color = (s: string) => string;
 }
+
+export = Pikmin;
