@@ -1,66 +1,39 @@
 import { WriteStream } from "fs";
 
-declare namespace Pikmin
-{
-    export const loggers: Pikmin.Collection<Pikmin.instance>;
-    export const version: string;
-    export const colors: Pikmin.Colors;
+declare namespace Pikmin {
+  export const loggers: Pikmin.Collection<Pikmin.instance>;
+  export const version: string;
+  export const colors: Pikmin.Colors;
 
-    export function bind(i: Pikmin.instance, a?: Console, b?: any): void;
-    export function unbind(i: Pikmin.instance): void;
+  export function bind(i: Pikmin.instance, a?: Console, b?: any): void;
+  export function unbind(i: Pikmin.instance): void;
 
-    export class instance {
-        constructor(options?: Pikmin.InstanceOptions);
-
-        public log: {
-            [x: string]: any;
-
-            __bound__: Console;
-        }
-
-        /** The name of the instance */
+  export class instance {
+    constructor(options?: Pikmin.InstanceOptions);
         public name: string;
-
-        /** The base format */
         public baseFormat: string;
-
-        /** An array of transports */
         public transports: Pikmin.Transport[];
 
-        /**
-         * Adds a transport
-         * @param transport The transport to add 
-         * @param options Any options to bind
-         */
+        public [x: string]: function(msg, ...args): void;
         public addTransport(transport: Pikmin.Transport, options?: { autogen: boolean }): void;
     }
 
-    export class Collection<T> extends Map<string | number, T>
-    {
-        public filter(i: (a: T) => boolean): T[];
-        public map(i: (a: T) => any): T[];
+    export class Collection<T> extends Map<string | number, T> {
+      public filter(i: (a: T) => boolean): T[];
+      public map(i: (a: T) => any): T[];
     }
 
-    /** 
-     * The console transport that logs anything to the terminal
-     */
-    export class ConsoleTransport implements Transport
-    {
+    export class ConsoleTransport implements Transport {
         constructor(options: Pikmin.InstanceOptions & { process: NodeJS.Process });
 
-        /** The type of the transport, implemented by the Transport interface */
         public type: 'CONSOLE' | 'WEBHOOK' | 'FILE';
-
-        /** The name of the transport, implemented by the Transport interface */
         public name: string;
-
-        /** The parent of the transport, implemented by the Transport interface; resolves by `undefined` */
         public parent: any | undefined;
 
-        /** The defaults of the transport, implemented by the Transport interface */
-        public defaults: { inspect: boolean }
+        public defaults: {
+          inspect: boolean
+        }
 
-        /** The NodeJS.Process tty, only to use Stdout#write */
         public process: NodeJS.Process;
         append(options: { inspect: boolean }, data: string): void;
         destroy(): this;
@@ -70,19 +43,11 @@ declare namespace Pikmin
     {
         constructor(options: { file: string, flags?: '-a', format: string });
 
-        /** The type of the transport, implemented by the Transport interface */
         public type: 'CONSOLE' | 'WEBHOOK' | 'FILE';
-
-        /** The name of the transport, implemented by the Transport interface */
         public name: string;
-
-        /** The parent of the transport, implemented by the Transport interface; resolves by `undefined` */
         public parent: any | undefined;
-
-        /** The defaults of the transport, implemented by the Transport interface */
         public defaults: { inspect: boolean }
 
-        /** The write stream */
         public stream: WriteStream;
         append(options: { inspect: boolean }, data: string): void;
         destroy(): this;
