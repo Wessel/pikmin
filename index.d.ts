@@ -14,7 +14,7 @@ declare namespace Pikmin {
         public baseFormat: string;
         public transports: Pikmin.Transport[];
 
-        public [x: string]: function(msg, ...args): void;
+        public log(type: string, msg: string, ...options): void;
         public addTransport(transport: Pikmin.Transport, options?: { autogen: boolean }): void;
     }
 
