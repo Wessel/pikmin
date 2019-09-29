@@ -13,8 +13,7 @@ declare namespace Pikmin {
     public name: string;
     public baseFormat: string;
     public transports: Pikmin.Transport[];
-
-    public log(type: string, msg: string, ...options): void;
+    public log(type: string, msg: string | object, ...options: any[]): void;
     public addTransport(transport: Pikmin.Transport, options?: { autogen: boolean }): void;
   }
 
@@ -106,8 +105,8 @@ declare namespace Pikmin {
     blink: Color;
     inverse: Color;
     strikethrough: Color;
-    hex: (rgb: string) => string;
-    rgb: (values: [number, number, number]) => string;
+    hex: (rgb: string, content: string) => string;
+    rgb: (values: [number, number, number], content: string) => string;
     strip: (val: string) => string;
     supported: boolean;
   }
@@ -132,7 +131,7 @@ declare namespace Pikmin {
     destroy(): this;
   }
 
-  export type Color = (s: string) => string;
+  export type Color = (value: string | object) => string;
 }
 
 export = Pikmin;
